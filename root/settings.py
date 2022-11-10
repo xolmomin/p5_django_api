@@ -35,8 +35,9 @@ INSTALLED_APPS = [
 
     # Third-party apps
     'mptt',
-    'ckeditor',
     'rest_framework',
+    # 'rest_framework.authtoken',
+    'ckeditor',
     'drf_yasg',
 
 ]
@@ -202,6 +203,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
@@ -219,3 +221,9 @@ SWAGGER_SETTINGS = {
         }
     },
 }
+
+EMAIL_HOST_USER = 'ganiyevjahongir03@gmail.com'
+EMAIL_HOST_PASSWORD = 'cqvghickwyqwsnvk'
+EMAIL_PORT = '587'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
