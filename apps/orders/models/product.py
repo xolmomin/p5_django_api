@@ -23,7 +23,7 @@ class Product(SlugBaseModel):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        while Product.objects.filter(self.slug).exists():
+        while Product.objects.filter(slug=self.slug).exists():
             self.slug += self.slug + '1'
         super().save(*args, **kwargs)
 
