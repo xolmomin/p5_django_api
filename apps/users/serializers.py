@@ -1,6 +1,6 @@
 from django.contrib.auth.hashers import make_password
 from rest_framework.exceptions import ValidationError
-from rest_framework.fields import CharField
+from rest_framework.fields import CharField, EmailField
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -25,7 +25,9 @@ class UserCreateModelSerializer(ModelSerializer):
         if confirm_password != password:
             raise ValidationError("Password didn't match")
         attrs['password'] = make_password(password)
+        # attrs['is_active'] = False
         validated_data = super().validate(attrs)
+
         return validated_data
 
     class Meta:
