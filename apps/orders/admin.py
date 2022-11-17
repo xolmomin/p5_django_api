@@ -1,3 +1,4 @@
+from django.apps import apps
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 
@@ -12,3 +13,4 @@ class ProductAdmin(ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(ModelAdmin):
     exclude = ('slug',)
+

@@ -1,7 +1,7 @@
 from rest_framework.fields import CurrentUserDefault, IntegerField
 from rest_framework.serializers import ModelSerializer, HiddenField
 
-from orders.models import Product, Category
+from orders.models import Product, Category, Comment
 
 
 class ProductModelSerializer(ModelSerializer):
@@ -12,16 +12,22 @@ class ProductModelSerializer(ModelSerializer):
     updated_by = HiddenField(default=CurrentUserDefault())
 
     # def create(self, validated_data):
-        # print(123)
-        # validated_data['created_by'] = self.context['request'].user
-        # validated_data['updated_by'] = self.context['request'].user
-        # return super().create(validated_data)
+    # print(123)
+    # validated_data['created_by'] = self.context['request'].user
+    # validated_data['updated_by'] = self.context['request'].user
+    # return super().create(validated_data)
 
     # updated_by = HiddenField(default=CurrentUserDefault())
 
     class Meta:
         model = Product
         exclude = ()
+
+
+class CommentModelSerializer(ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('id', 'text')
 
 
 class CategoryModelSerializer(ModelSerializer):
@@ -33,7 +39,3 @@ class CategoryModelSerializer(ModelSerializer):
         repr = super().to_representation(instance)
         repr['products'] = ProductModelSerializer(instance.product_set.all(), many=True).data
         return repr
-
-
-
-

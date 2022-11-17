@@ -1,1 +1,1 @@
-from orders.serializers.product import ProductModelSerializer, CategoryModelSerializer
+from orders.serializers.product import ProductModelSerializer, CategoryModelSerializer, CommentModelSerializer

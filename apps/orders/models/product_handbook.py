@@ -26,22 +26,22 @@ class ProductImages(Model):
     product = ForeignKey('orders.Product', CASCADE)
     image = ImageField(upload_to='products/images/')
 
-
-class Comment(Model):
-    class Rating(IntegerChoices):
-        EXCELLENT = 5
-        GOOD = 4
-        AVERAGE = 3
-        BAD = 2
-        WORSE = 1
-
-    name = CharField(max_length=255)
-    text = TextField()
-    rate = SmallIntegerField(default=Rating.EXCELLENT, choices=Rating.choices)
-    product = ForeignKey('orders.Product', CASCADE)
-    author = ForeignKey('users.User', SET_NULL, null=True, blank=True)
-    updated_at = DateTimeField(auto_now=True)
-    created_at = DateTimeField(auto_now_add=True)
-
-    class Meta:
-        ordering = ['-created_at']
+#
+# class Comment(Model):
+#     class Rating(IntegerChoices):
+#         EXCELLENT = 5
+#         GOOD = 4
+#         AVERAGE = 3
+#         BAD = 2
+#         WORSE = 1
+#
+#     name = CharField(max_length=255)
+#     text = TextField()
+#     rate = SmallIntegerField(default=Rating.EXCELLENT, choices=Rating.choices)
+#     product = ForeignKey('orders.Product', CASCADE)
+#     author = ForeignKey('users.User', SET_NULL, null=True, blank=True)
+#     updated_at = DateTimeField(auto_now=True)
+#     created_at = DateTimeField(auto_now_add=True)
+#
+#     class Meta:
+#         ordering = ['-created_at']

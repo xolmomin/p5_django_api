@@ -73,6 +73,7 @@ class ChangePasswordApiView(GenericAPIView):
 
 
 class ForgetPasswordApiView(GenericAPIView):
+    queryset = User.objects.all()
     serializer_class = ForgetPasswordSerializer
 
     def __send_email_confirmation_token(self, username):
